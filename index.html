@@ -201,6 +201,49 @@
                     </div>
                 </div>
 
+                <!-- KHÔNG CHẤP NHẬN NỘI QUY -->
+                <div id="declinedBox" class="hidden glass-panel p-10 text-center border-t-4 border-t-gray-500 fade-in delay-2">
+                    <i class="fas fa-hand-paper text-6xl text-gray-400 mb-6 drop-shadow-lg"></i>
+                    <h3 class="text-3xl font-bold text-white mb-4 title-font">Hẹn Gặp Lại!</h3>
+                    <p class="text-gray-200 text-lg font-medium">Pride Game hẹn bạn vào một dịp khác hoặc một sự kiện khác.</p>
+                </div>
+
+                <!-- BẢNG NỘI QUY TRƯỚC KHI ĐĂNG KÝ -->
+                <div id="rulesAgreementBox" class="hidden glass-panel p-6 md:p-8 border-t-4 border-t-yellow-400 fade-in delay-2">
+                    <div class="text-center mb-6">
+                        <h3 class="text-3xl title-font text-white font-bold flex items-center justify-center gap-3">
+                            <i class="fas fa-scroll text-yellow-400"></i> Lời Nhắn Từ Ban Quản Trò
+                        </h3>
+                        <p class="text-sm text-gray-300 mt-2 font-medium">Ban quản trò “LÀNG MA SÓI” & Admin có vài lời muốn nhắn nhủ đến các bạn:</p>
+                    </div>
+                    
+                    <div class="space-y-3 text-sm text-gray-200 font-medium mb-6 bg-black/40 p-5 rounded-xl border border-white/10 max-h-96 overflow-y-auto">
+                        <p><strong class="text-yellow-400">1.</strong> Giới hạn số lượng thành viên đăng ký tham gia là 20 khách. Khi đủ 20 khách, cổng đăng ký sẽ đóng.</p>
+                        <p><strong class="text-yellow-400">2.</strong> Ban quản trò chỉ nhận thành viên tham gia đã đăng ký trước. Không đăng ký sẽ không được tham gia "LÀNG MA SÓI".</p>
+                        <p><strong class="text-yellow-400">3.</strong> Ban quản trò chỉ duyệt những bạn thật sự muốn chơi game.</p>
+                        <p><strong class="text-yellow-400">4.</strong> Quản trò chính thức sẽ là Tom & Tom sẽ chọn 1 bạn hỗ trợ (chỉ 2 người trong Ban quản trò).</p>
+                        <p><strong class="text-yellow-400">5.</strong> Bạn mới chưa chơi game bao giờ, sẽ ngồi xem quan sát trước.</p>
+                        <p><strong class="text-yellow-400">6.</strong> Các bạn đã "chết" trong game sẽ giữ trật tự & tôn trọng các bạn còn lại.</p>
+                        <p><strong class="text-yellow-400">7.</strong> Âm lượng giọng nói mỗi người tự điều chỉnh vừa đủ nghe.</p>
+                        <p><strong class="text-yellow-400">8.</strong> Tránh quá lớn tiếng, cọc cằn, thô lỗ gây hiểu lầm nhau.</p>
+                        <p><strong class="text-yellow-400">9.</strong> "LÀNG MA SÓI" là trò chơi tranh luận, suy luận. Không liên quan đến tình bạn ngoài đời thực.</p>
+                        <p><strong class="text-yellow-400">10.</strong> Trường hợp thành viên tham gia không tuân thủ theo quy định sẽ được mời ra khỏi “LÀNG MA SÓI”.</p>
+                        
+                        <div class="text-center pt-4 mt-2 border-t border-white/20">
+                            <p class="text-yellow-300 font-bold text-base">==> Ban quản trò cảm ơn chân thành đến các bạn luôn yêu quý “LÀNG MA SÓI” ❤️</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button id="btnDeclineRules" class="w-full bg-gray-700/60 hover:bg-gray-700 border border-gray-500 text-gray-200 font-bold py-3 px-4 rounded-xl transition-all duration-300 text-lg title-font">
+                            Không chấp nhận
+                        </button>
+                        <button id="btnAcceptRules" class="w-full btn-game text-white font-bold py-3 px-4 rounded-xl text-lg title-font flex items-center justify-center gap-2">
+                            <i class="fas fa-check"></i> Chấp nhận
+                        </button>
+                    </div>
+                </div>
+
                 <!-- FORM ĐĂNG KÝ -->
                 <div id="registrationFormBox" class="hidden glass-panel p-6 md:p-8 border-t-4 border-t-orange-500 fade-in delay-2">
                     <div class="text-center mb-8">
@@ -258,10 +301,10 @@
                     </div>
                 </div>
 
-                <!-- LƯU Ý (Luật chơi) -->
+                <!-- LƯU Ý (Luật chơi cũ giữ nguyên) -->
                 <div class="glass-panel p-6 border-l-4 border-l-yellow-400 fade-in delay-3">
                     <h4 class="text-white font-bold mb-4 flex items-center title-font text-xl">
-                        <i class="fas fa-book-open text-yellow-400 mr-3 text-2xl"></i> Nội Quy Của Làng
+                        <i class="fas fa-book-open text-yellow-400 mr-3 text-2xl"></i> Nội Quy Chung
                     </h4>
                     <ul class="space-y-4 text-sm text-gray-200 font-medium">
                         <li class="flex items-start bg-white/5 p-3 rounded-lg border border-white/10">
@@ -318,7 +361,8 @@
                     const now = new Date().getTime();
                     
                     if (now >= evt.dangKyTu && now <= evt.dangKyDen) {
-                        document.getElementById('registrationFormBox').classList.remove('hidden');
+                        // HIỂN THỊ BẢNG NỘI QUY TRƯỚC KHI CHO ĐĂNG KÝ
+                        document.getElementById('rulesAgreementBox').classList.remove('hidden');
                     } else {
                         document.getElementById('closedVillage').classList.remove('hidden');
                     }
@@ -334,6 +378,18 @@
                 `;
             }
         }
+
+        // ====== XỬ LÝ NÚT NỘI QUY ======
+        document.getElementById('btnAcceptRules').addEventListener('click', () => {
+            document.getElementById('rulesAgreementBox').classList.add('hidden');
+            document.getElementById('registrationFormBox').classList.remove('hidden');
+        });
+
+        document.getElementById('btnDeclineRules').addEventListener('click', () => {
+            document.getElementById('rulesAgreementBox').classList.add('hidden');
+            document.getElementById('declinedBox').classList.remove('hidden');
+        });
+        // ===============================
 
         document.getElementById('formDangKy').addEventListener('submit', async (e) => {
             e.preventDefault();
